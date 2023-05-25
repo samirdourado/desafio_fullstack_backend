@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { randomUUID } from 'node:crypto';
 
 const date = Date.now();
@@ -8,6 +9,8 @@ export class User {
   fullname: string;
   phone: string;
   email: string;
+
+  @Exclude()
   password: string;
   readonly registredAt: Date;
 
