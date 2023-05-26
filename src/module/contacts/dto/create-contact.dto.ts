@@ -1,4 +1,6 @@
-import { IsString, IsNotEmpty, IsEmail, IsOptional, MinLength } from "class-validator";
+import { IsString, IsNotEmpty, IsEmail, IsOptional, MinLength, IsEnum } from "class-validator";
+// import { ContactType } from "../entities/contact.entity";
+// import { ApiProperty } from '@nestjs/swagger'
 
 export class CreateContactDto {
     
@@ -8,7 +10,7 @@ export class CreateContactDto {
 
     @IsString()
     @IsNotEmpty()
-    fullname: string;
+    name: string;
 
     @IsString()
     @IsNotEmpty()
@@ -20,6 +22,17 @@ export class CreateContactDto {
     @IsEmail()
     @IsOptional()
     email: string | null;
-
+    
     registredAt: Date;
+
+    // @IsString()
+    // @IsNotEmpty()    
+    // @IsOptional()
+    // @IsEnum()
+    // @ApiProperty({ enum: ['Main', 'House', 'Mobile', 'Work', 'Others']})
+    // type: ContactType
 }
+
+// function ApiProperty(arg0: { enum: string[]; }): (target: CreateContactDto, propertyKey: "type") => void {
+//     throw new Error("Function not implemented.");
+// }

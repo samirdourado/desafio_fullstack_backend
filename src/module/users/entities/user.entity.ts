@@ -6,7 +6,7 @@ const fDate = new Date(date);
 
 export class User {
   readonly id: string;
-  fullname: string;
+  name: string;
   phone: string;
   email: string;
 
