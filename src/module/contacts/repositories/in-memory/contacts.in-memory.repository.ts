@@ -5,6 +5,7 @@ import { Contact } from '../../entities/contact.entity';
 
 @Injectable()
 export class ContactsInMemoryRepository implements ContactsRepository {
+    
     private database: Contact[] = [];
 
     async create(data: CreateContactDto): Promise<Contact> {
@@ -34,5 +35,8 @@ export class ContactsInMemoryRepository implements ContactsRepository {
             return this.groupBy(this.database, group);
         }
         return this.database
+    }
+    delete(id: string): void | Promise<void> {
+        throw new Error('Method not implemented.');
     }
 }

@@ -6,4 +6,5 @@ export abstract class ContactsRepository {
     abstract create(data: CreateContactDto): Promise<Contact>;
     abstract findOne(id: string): Promise<Contact | undefined>;
     abstract findAll(group: string | undefined): Promise<Contact[] | object>;
+    abstract delete(id: string): Promise<void> | void;    
 }

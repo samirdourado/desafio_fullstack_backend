@@ -2,27 +2,28 @@ import { Exclude } from 'class-transformer';
 import { randomUUID } from 'node:crypto';
 
 const date = Date.now();
-const fDate = new Date(date);
+const formatDate = new Date(date);
 
 export class Contact {
   readonly id: string;
-  user_id: string;
+  user_id?: string;
   name: string;
-  phone: string | null;
-  email: string | null;
-  type: string
-  readonly registredAt: Date;
+  phone: string;
+  email: string;
+  type: string | null;
+  readonly registredAt: string;
 
   constructor() {
     this.id = randomUUID();
-    this.registredAt = fDate;
+    this.registredAt = formatDate+"";
+    this.type = ContactType.Main;
   }
 }
 
-// export enum ContactType {
-//   Main = 'Main',
-//   Hose = 'House',
-//   Mobile = 'Mobile',
-//   Work = 'Work',
-//   Others = 'Others'
-// }
+export enum ContactType {
+  Main = 'Main',
+  House = 'House',
+  Mobile = 'Mobile',
+  Work = 'Work',
+  Others = 'Others'
+}

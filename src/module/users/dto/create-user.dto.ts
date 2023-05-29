@@ -24,5 +24,5 @@ export class CreateUserDto {
   })
   password: string;
    
-  registredAt: Date;
+  registredAt: string;
 }

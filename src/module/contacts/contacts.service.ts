@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { ContactsRepository } from './repositories/contacts.repositories';
 
@@ -17,6 +17,11 @@ export class ContactsService {
 
     async findOne(id: string) {
         const findContact = await this.contactRepository.findOne(id)
+        if(!findContact) {
+            throw new NotFoundException('Contact not found')
+        }
         return findContact
     }
+
+    
 }

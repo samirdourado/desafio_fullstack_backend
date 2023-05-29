@@ -15,15 +15,22 @@ model User {
   name     String
   email    String     @unique
   password String
-  Contacts Contacts[]
+  phone    String
+  registredAt String
+  Contacts Contact[]
+
+  @@map("users")
 }
 
-model Contacts {
+model Contact {
   id       String @id
-  name     String
-  phone    String
+  name     String @unique
   email    String @unique
-  password String
+  phone    String
+  type     String
+  registredAt String
   user     User   @relation(fields: [user_id], references: [id])
   user_id  String
+
+  @@map("contacts")
 }

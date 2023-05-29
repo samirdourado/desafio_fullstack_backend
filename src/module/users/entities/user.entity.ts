@@ -2,7 +2,7 @@ import { Exclude } from 'class-transformer';
 import { randomUUID } from 'node:crypto';
 
 const date = Date.now();
-const fDate = new Date(date);
+const formatDate = date+"";
 
 export class User {
   readonly id: string;
@@ -12,10 +12,10 @@ export class User {
 
   @Exclude()
   password: string;
-  readonly registredAt: Date;
+  readonly registredAt: string;
 
   constructor() {
     this.id = randomUUID();
-    this.registredAt = fDate;
+    this.registredAt = formatDate;
   }
 }
