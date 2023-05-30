@@ -10,6 +10,14 @@ import { plainToInstance } from "class-transformer";
 @Injectable()
 export class ContactsPrismaRepository implements ContactsRepository {
     constructor(private prisma: PrismaService) {}
+    async update(id: string, data: UpdatecontactDto): Promise<Contact> {
+        const contact = await this.prisma.contact.update({
+            where: {id},
+            data: {...data}
+        })
+
+        return plainToInstance(Contact, contact)
+    }
     
     async create(data: CreateContactDto, userId: string): Promise<Contact> {
         const contact = new Contact()
@@ -29,7 +37,6 @@ export class ContactsPrismaRepository implements ContactsRepository {
             }
         });
 
-        // return newContact;
         return plainToInstance(Contact, newContact);
     }
     async findOne(id: string): Promise<Contact> {
@@ -56,12 +63,5 @@ export class ContactsPrismaRepository implements ContactsRepository {
     async delete(id: string): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    // async update(id: string, data: UpdatecontactDto): Promise<Contact> {
-    //     const contact = await this.prisma.contact.update({
-    //         where: {id},
-    //         data: {...data}
-    //     })
-
-    //     return contact
-    // }
+    
 }

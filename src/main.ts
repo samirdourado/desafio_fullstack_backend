@@ -23,6 +23,7 @@ async function bootstrap() {
       transformOptions: { groups: ['transform'] }
      })
   )
+  app.enableCors()
   await app.listen(3000);
 }
 bootstrap();
