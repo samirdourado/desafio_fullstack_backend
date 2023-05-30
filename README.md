@@ -39,23 +39,25 @@ $ npm install
 $ npm run start
 
 # watch mode
-$ npm run start:dev
+$ npm run dev
 
 # production mode
 $ npm run start:prod
 ```
 
-## Test
+## Documentation
 
 ```bash
-# unit tests
-$ npm run test
+# Documentation using swagger
+http://localhost:3000/api
 
-# e2e tests
-$ npm run test:e2e
+```
+## Base Url
 
-# test coverage
-$ npm run test:cov
+```bash
+# Documentation using swagger
+http://localhost:3000
+
 ```
 
 ## Support
