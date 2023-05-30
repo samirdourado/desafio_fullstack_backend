@@ -31,6 +31,11 @@
 ```bash
 $ npm install
 ```
+## Run Migrations
+
+```bash
+$ npx prisma migrate dev
+```
 
 ## Running the app
 

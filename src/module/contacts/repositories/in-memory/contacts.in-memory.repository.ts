@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { ContactsRepository } from '../contacts.repositories';
 import { CreateContactDto } from '../../dto/create-contact.dto';
 import { Contact } from '../../entities/contact.entity';
+import { UpdatecontactDto } from '../../dto/update-contact.dto';
+import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 export class ContactsInMemoryRepository implements ContactsRepository {
@@ -37,7 +39,19 @@ export class ContactsInMemoryRepository implements ContactsRepository {
         }
         return this.database
     }
+
+    update(id: string, data: UpdatecontactDto ): Contact | Promise<Contact> {
+        const contactIndex = this.database.findIndex((contact) => contact.id === id);
+        this.database[contactIndex] = {
+            ...this.database[contactIndex],
+            ...data
+        };
+
+        return this.database[contactIndex]
+    }   
+
     delete(id: string): void | Promise<void> {
-        throw new Error('Method not implemented.');
+        const contact = this.database.findIndex((contact) => contact.id === id);
+        this.database.splice(contact, 1)
     }
 }

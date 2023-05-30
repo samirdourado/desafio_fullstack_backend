@@ -14,9 +14,7 @@ import { ContactsPrismaRepository } from './repositories/prisma/contact-prisma.r
     PrismaService,
     {
       provide: ContactsRepository,
-      // useClass: UsersPrismaRepository,
-      useClass: ContactsPrismaRepository,
-      // useClass: ContactsInMemoryRepository,
+      useClass: ContactsPrismaRepository,      
     },
   ],
 })

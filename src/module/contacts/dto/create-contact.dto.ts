@@ -36,7 +36,7 @@ export class CreateContactDto {
         type: String,
         default: "Mon May 29 2023 14:30:24 GMT-0300 (GMT-03:00)",
       })
-    registredAt: Date;
+    registredAt: string;
 
     @ApiProperty({
         description: 'Tipos de Contato por Enum',
