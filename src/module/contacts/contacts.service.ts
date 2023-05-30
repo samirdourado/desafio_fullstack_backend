@@ -6,8 +6,8 @@ import { ContactsRepository } from './repositories/contacts.repositories';
 export class ContactsService {
     constructor(private contactRepository: ContactsRepository) {}
 
-    async create(createContactDto: CreateContactDto) {
-        const contact = await this.contactRepository.create(createContactDto)
+    async create(createContactDto: CreateContactDto, userId: string) {
+        const contact = await this.contactRepository.create(createContactDto, userId)
         return contact
     }
 

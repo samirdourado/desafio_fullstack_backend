@@ -11,7 +11,7 @@ import { plainToInstance } from "class-transformer";
 export class ContactsPrismaRepository implements ContactsRepository {
     constructor(private prisma: PrismaService) {}
     
-    async create(data: CreateContactDto): Promise<Contact> {
+    async create(data: CreateContactDto, userId: string): Promise<Contact> {
         const contact = new Contact()
         Object.assign(contact, {
             ...data
@@ -25,7 +25,7 @@ export class ContactsPrismaRepository implements ContactsRepository {
                 phone: contact.phone,
                 type: contact.type,
                 registredAt: contact.registredAt,
-                user_id: contact.user_id
+                user_id: userId
             }
         });
 

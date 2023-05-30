@@ -8,10 +8,11 @@ export class ContactsInMemoryRepository implements ContactsRepository {
     
     private database: Contact[] = [];
 
-    async create(data: CreateContactDto): Promise<Contact> {
+    async create(data: CreateContactDto, userId): Promise<Contact> {
         const newContact = new Contact();
         Object.assign(newContact, {
-            ...data
+            ...data,
+            user_id: userId
         });
 
         this.database.push(newContact);
