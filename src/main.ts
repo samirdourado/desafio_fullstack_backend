@@ -6,10 +6,6 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors({
-    origin: 'https://localhost:3001',
-  })
-
   const config = new DocumentBuilder()
   .setTitle('Agenda app')
   .setDescription('Armazene seus contatos')
@@ -27,7 +23,9 @@ async function bootstrap() {
       transformOptions: { groups: ['transform'] }
      })
   )
+
+  app.enableCors()
   
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
