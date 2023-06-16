@@ -54,6 +54,5 @@ export class UsersPrismaRepository implements UsersRepository {
         await this.prisma.user.delete({
             where: { id },
         })
-    }
-    
+    }    
 }
